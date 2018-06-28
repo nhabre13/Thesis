@@ -1,12 +1,10 @@
 package com.nadeem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+// Payload is an object that contains the three variables that can be collected by the accelerometer: x-axis, y-axis, z-axis
+// TODO: May change the variables depending on the inner workings of the motion API.
 public class Payload implements Serializable {
 
     private int x;
@@ -21,6 +19,8 @@ public class Payload implements Serializable {
 
     public Payload() {
     }
+
+    // getters
 
     public int getY() {
         return y;

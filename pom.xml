@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-
+        <!-- Dependencies in for spring boot to run properly -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -52,6 +52,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Mongodb dependency needed to use mongodb -->
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>

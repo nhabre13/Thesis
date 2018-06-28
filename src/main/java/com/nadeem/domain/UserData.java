@@ -7,10 +7,15 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.*;
 
+// notifies spring that this class persists in the db
 @Entity
+// specifying the collection used
 @Document(collection = "user")
 public class UserData implements Serializable {
 
+    // include all the variables that will be added to the db. These will be gathered from the users in the front end
+    // Mongodb have their own unique id, which hashes all the values in the document as one string
+    // We'll use the hashed email to identify returning users and correlate data
     @Id
     private String hashEmail;
 
@@ -29,6 +34,8 @@ public class UserData implements Serializable {
 
     public UserData() {
     }
+
+    // getters
 
     public String getHashEmail() {
         return hashEmail;
