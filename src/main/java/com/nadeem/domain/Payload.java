@@ -3,24 +3,35 @@ package com.nadeem.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
 public class Payload implements Serializable {
 
+    private int x;
+    private int y;
+    private int z;
 
-
-    @Id
-    private String id;
-
-    public Payload(String id) {
-        this.id = id;
+    public Payload(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
-    public Payload() {}
+    public Payload() {
+    }
 
-    public String getId() {
-        return id;
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getZ() {
+        return z;
     }
 
     @Override
@@ -28,12 +39,14 @@ public class Payload implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payload payload = (Payload) o;
-        return Objects.equals(id, payload.id);
+        return x == payload.x &&
+                y == payload.y &&
+                z == payload.z;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
-    }
 
+        return Objects.hash(x, y, z);
+    }
 }

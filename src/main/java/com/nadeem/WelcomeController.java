@@ -3,6 +3,7 @@ package com.nadeem;
 import com.nadeem.domain.UserData;
 import com.nadeem.repository.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +19,9 @@ public class WelcomeController {
     @RequestMapping(value = "/put", method = RequestMethod.POST)
     public @ResponseBody
     UserData put(@RequestBody final UserData userData) {
-        UserData data = repository.findOne(userData.getHashEmail());
-        if (data == null) {
-            return repository.save(userData);
-        } else {
-            data.addPayload(userData.getPayload());
-            repository.save(data);
-            return data;
-        }
+
+        return repository.save(userData);
+
     }
 
 }

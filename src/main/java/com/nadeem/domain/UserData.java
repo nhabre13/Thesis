@@ -1,13 +1,14 @@
 package com.nadeem.domain;
 
-import javax.persistence.CascadeType;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.*;
 
 @Entity
+@Document(collection = "user")
 public class UserData implements Serializable {
 
     @Id
@@ -16,24 +17,17 @@ public class UserData implements Serializable {
     private String model;
     private String os;
     private String browser;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Payload> payload = new HashSet<>();
+    private Payload payload;
 
     public UserData(String hashEmail, String model, String os, String browser, Payload payload) {
         this.hashEmail = hashEmail;
         this.model = model;
         this.os = os;
         this.browser = browser;
-        this.payload.add(payload);
+        this.payload = payload;
     }
 
     public UserData() {
-    }
-
-    public Set<Payload> addPayload(final Set<Payload> payload){
-        this.payload.addAll(payload);
-
-        return this.payload;
     }
 
     public String getHashEmail() {
@@ -52,7 +46,7 @@ public class UserData implements Serializable {
         return browser;
     }
 
-    public Set<Payload> getPayload() {
+    public Payload getPayload() {
         return payload;
     }
 
