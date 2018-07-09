@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @Controller
 public class WelcomeController {
 
@@ -21,9 +23,8 @@ public class WelcomeController {
     @RequestMapping(value = "/put", method = RequestMethod.POST)
     public @ResponseBody
     UserData put(@RequestBody final UserData userData) {
-
         // .save inserts the data into the database
-        return repository.save(userData);
+        return repository.save(userData.hashData());
 
     }
 
