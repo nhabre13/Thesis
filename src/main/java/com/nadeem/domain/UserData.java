@@ -19,7 +19,6 @@ public class UserData implements Serializable {
     // Mongodb have their own unique id, which hashes all the values in the document as one string
     // We'll use the hashed email to identify returning users and correlate data
     private String hashEmail;
-
     private String model;
     private String os;
     private String environment;
